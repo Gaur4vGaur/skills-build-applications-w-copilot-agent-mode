@@ -19,22 +19,13 @@ class Command(BaseCommand):
         ]
 
         activities = [
-            {"user": "user1@example.com", "activity": "Running", "duration": 30},
+            {"name": "Running", "duration": 30, "calories_burned": 300, "user": "user1@example.com"},
+            {"name": "Cycling", "duration": 60, "calories_burned": 600, "user": "user2@example.com"},
         ]
 
-        leaderboard = [
-            {"user": "user1@example.com", "points": 100},
-        ]
-
-        workouts = [
-            {"name": "Morning Yoga", "duration": 60},
-        ]
-
-        # Insert data into collections
+        # Insert test data into the database
         db.users.insert_many(users)
         db.teams.insert_many(teams)
-        db.activity.insert_many(activities)
-        db.leaderboard.insert_many(leaderboard)
-        db.workouts.insert_many(workouts)
+        db.activities.insert_many(activities)
 
-        self.stdout.write(self.style.SUCCESS('Successfully populated the database with test data'))
+        self.stdout.write(self.style.SUCCESS('Test data successfully added to the database.'))
